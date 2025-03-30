@@ -7,35 +7,35 @@ const Education = () => {
       institution: "École Supérieure de Génie Informatique, Paris (12e)",
       period: "2023 - 2025",
       description: "Formation approfondie en développement web, architecture logicielle, DevOps et gestion de projet.",
-      image: "../src/assets/images/education/esgi.png"
+      image: "/assets/images/education/esgi.png"
     },
     {
       degree: "Licence professionnelle - Métiers de l'informatique : Conception, Développement et Test de logiciels",
       institution: "IUT de Villetaneuse et IUT de Paris",
       period: "2022 - 2023",
       description: "Spécialisation en développement d'applications web et mobile, avec focus sur les tests logiciels et la qualité.",
-      image: "../src/assets/images/education/iut-paris.png"
+      image: "/assets/images/education/iut-paris.png"
     },
     {
       degree: "L2 générale Informatique",
       institution: "Institut Galilée, Villetaneuse",
       period: "2021 - 2022",
       description: "Fondamentaux de l'informatique, algorithmique et programmation.",
-      image: "../src/assets/images/education/institut-galilee.jpg"
+      image: "/assets/images/education/institut-galilee.jpg"
     },
     {
       degree: "DUT Informatique",
       institution: "IUT de Villetaneuse",
       period: "2019 - 2021",
       description: "Formation complète en informatique couvrant la programmation, les bases de données, et les réseaux.",
-      image: "../src/assets/images/education/iut-villetaneuse.png"
+      image: "/assets/images/education/iut-villetaneuse.png"
     },
     {
       degree: "Baccalauréat Scientifique option Sciences de l'Ingénieur",
       institution: "Lycée général Gustave Monod, Enghien-les-Bains",
       period: "2019",
       description: "Formation scientifique avec spécialisation en sciences de l'ingénieur.",
-      image: "../src/assets/images/education/lyc-monod.jpg"
+      image: "/assets/images/education/lyc-monod.jpg"
     }
   ];
 

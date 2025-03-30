@@ -3,7 +3,7 @@ export const projectsData = [
       id: 1,
       title: "HardWareHouse",
       description: "Plateforme de gestion de devis et de factures pour les PME du secteur informatique.",
-      image: "../src/assets/images/projects/hardwarehouse.png",
+      image: "/assets/images/projects/hardwarehouse.png",
       technologies: ["Symfony 6.2", "Twig", "JavaScript", "TailwindCSS", "SASS", "PostgreSQL"],
       features: [
         "Création, modification et suppression de devis et factures",
@@ -21,7 +21,7 @@ export const projectsData = [
       id: 2,
       title: "TerraFlora",
       description: "Site web e-commerce de vente de fleurs avec fonctionnalités avancées et conformité RGPD.",
-      image: "../src/assets/images/projects/terraflora.png",
+      image: "/assets/images/projects/terraflora.png",
       technologies: ["Vue.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "TailwindCSS"],
       features: [
         "Authentification sécurisée avec confirmation par mail",
@@ -40,7 +40,7 @@ export const projectsData = [
       id: 3,
       title: "VroomVroomAuto",
       description: "Plateforme de gestion de flotte de motos Triumph avec architecture clean code et microservices.",
-      image: "../src/assets/images/projects/vroomvroomauto.png",
+      image: "/assets/images/projects/vroomvroomauto.png",
       technologies: ["React", "Angular", "TypeScript", "Node.js", "Express.js", "NestJS", "PostgreSQL", "MongoDB"],
       features: [
         "Double front-end en React et Angular",
@@ -59,7 +59,7 @@ export const projectsData = [
       id: 4,
       title: "Chifoumi",
       description: "Jeu de Pierre-Feuille-Ciseaux développé en React avec appels à une API existante.",
-      image: "../src/assets/images/projects/chifoumi.png",
+      image: "/assets/images/projects/chifoumi.png",
       technologies: ["React", "JSX", "API Rest"],
       features: [
         "Interface de jeu interactive",
@@ -75,7 +75,7 @@ export const projectsData = [
       id: 5,
       title: "Pipeline CI/CD pour Microservices",
       description: "Mise en place d'un pipeline CI/CD complet pour une application e-commerce en microservices.",
-      image: "../src/assets/images/projects/cicd.png",
+      image: "/assets/images/projects/cicd.png",
       technologies: ["GitLab CI/CD", "Docker", "Docker Swarm", "SonarQube", "Trivy", "Snyk", "Prometheus", "Grafana"],
       features: [
         "Configuration de GitLab CI/CD pour différents environnements",
@@ -93,7 +93,7 @@ export const projectsData = [
       id: 6,
       title: "TypeScript et Domain-Driven Design",
       description: "Cours avancé sur TypeScript et Domain-Driven Design pour le développement d'API Node.js.",
-      image: "../src/assets/images/projects/ts-ddd-node.png",
+      image: "/assets/images/projects/ts-ddd-node.png",
       technologies: ["TypeScript", "Node.js", "Express.js", "TypeORM", "Postman"],
       features: [
         "Documentation de cours complète",
@@ -110,7 +110,7 @@ export const projectsData = [
       id: 7,
       title: "Airtable Portfolio",
       description: "Portfolio de la filière Ingénierie du Web utilisant Airtable pour la gestion des données.",
-      image: "../src/assets/images/projects/airtable-portfolio.png",
+      image: "/assets/images/projects/airtable-portfolio.png",
       technologies: ["Nuxt.js", "Vue.js", "API Airtable"],
       features: [
         "Liste des projets étudiants",
@@ -128,7 +128,7 @@ export const projectsData = [
       id: 8,
       title: "Gestion d'association sportive",
       description: "Application de gestion pour l'Association Sportive Omnisports de Pierrefitte-sur-Seine.",
-      image: "../src/assets/images/en-cours-de-dev.png",
+      image: "/assets/images/en-cours-de-dev.png",
       technologies: ["Vue.js", "Tailwind CSS", "Node.js", "TypeScript", "Express.js", "PostgreSQL", "MongoDB"],
       features: [
         "Gestion des adhérents et des cotisations",

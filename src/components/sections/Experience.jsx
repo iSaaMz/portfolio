@@ -18,7 +18,7 @@ const Experience = () => {
         "Administration, maintenance, tests et déploiements"
       ],
       technologies: ["PHP", "Symfony", "Nuxt.js", "Talend Open Studio", "Docker", "Ansible"],
-      image: "../src/assets/images/experience/minint.png"
+      image: "/assets/images/experience/minint.png"
     },
     {
       title: "Développeur mobile front-end",
@@ -33,7 +33,7 @@ const Experience = () => {
         "Optimisation du code et maintenance continue de l'application"
       ],
       technologies: ["React Native", "JavaScript", "UI/UX Design"],
-      image: "../src/assets/images/experience/ceostech.png"
+      image: "/assets/images/experience/ceostech.png"
     },
     // {
     //   title: "Chargé de soins (mission ponctuelle)",
@@ -47,7 +47,7 @@ const Experience = () => {
     //     "Aide à la Brigade de Protection Animale"
     //   ],
     //   technologies: [],
-    //   image: "../src/assets/images/sami.jpg"
+    //   image: "/assets/images/sami.jpg"
     // }
   ];
 

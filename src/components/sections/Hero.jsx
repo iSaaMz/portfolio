@@ -59,7 +59,7 @@ const Hero = () => {
             <div className="relative w-64 h-64 sm:w-80 sm:h-80">
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary to-primary/40 animate-pulse"></div>
               <img
-                src="../src/assets/images/sami.jpg"
+                src="/assets/images/sami.jpg"
                 alt="Sami Assiakh"
                 className="absolute inset-[6px] rounded-full object-cover border-4 border-background"
                 style={{ width: "calc(100% - 12px)", height: "calc(100% - 12px)" }}
