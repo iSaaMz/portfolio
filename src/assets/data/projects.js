@@ -13,7 +13,7 @@ export const projectsData = [
         "Génération de rapports financiers",
         "Gestion des utilisateurs, rôles et droits d'accès"
       ],
-      github: "https://github.com",
+      github: "https://github.com/LlamasScripters/HardWareHouse",
       demo: null,
       category: "Gestion & finance"
     },
@@ -32,8 +32,8 @@ export const projectsData = [
         "Gestion des stocks et alertes de fin de stock",
         "Conformité RGPD complète"
       ],
-      github: "https://github.com",
-      demo: null,
+      github: "https://github.com/LlamasScripters/TerraFlora",
+      demo: "https://terraflora.store/",
       category: "E-commerce"
     },
     {
@@ -51,7 +51,7 @@ export const projectsData = [
         "Gestion des essais et des conducteurs",
         "Application de la Clean Architecture"
       ],
-      github: "https://github.com",
+      github: "https://github.com/LlamasScripters/VroomVroomAuto",
       demo: null,
       category: "Gestion & microservices"
     },
@@ -67,8 +67,8 @@ export const projectsData = [
         "Système de score",
         "Animations ludiques"
       ],
-      github: "https://github.com",
-      demo: "https://demo-chifoumi.example.com",
+      github: "https://github.com/iSaaMz/chifoumi",
+      demo: "https://chifoumi-ivory.vercel.app/login",
       category: "Jeux"
     },
     {
@@ -85,7 +85,7 @@ export const projectsData = [
         "Monitoring avec Prometheus et Grafana",
         "Optimisation des pipelines avec caches et artefacts"
       ],
-      github: "https://gitlab.com",
+      github: "https://gitlab.com/test5835945/e-commerce-vue",
       demo: null,
       category: "DevOps & CI/CD"
     },
@@ -102,8 +102,8 @@ export const projectsData = [
         "Structuration en couches (domain, application, infrastructure)",
         "Système d'emprunt et de retour de livres"
       ],
-      github: "https://github.com",
-      demo: null,
+      github: "https://github.com/iSaaMz/ddd-library",
+      demo: "https://github.com/iSaaMz/ddd-library/blob/main/TypeScript%20et%20Domain-Driven%20Design.pdf",
       category: "Formations & architecture"
     },
     {
@@ -120,7 +120,7 @@ export const projectsData = [
         "Interface d'administration sécurisée",
         "Dashboard avec statistiques"
       ],
-      github: "https://github.com",
+      github: "https://github.com/LlamasScripters/PortfolioAirtable",
       demo: null,
       category: "Portfolio"
     },
