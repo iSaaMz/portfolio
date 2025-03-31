@@ -21,7 +21,7 @@ const About = () => {
             <h3 className="text-2xl font-semibold">Qui suis-je?</h3>
             <p className="text-muted-foreground">
               Je suis un développeur full-stack passionné par les technologies web et mobile, avec une 
-              expertise particulière en Nuxt.js/Vue.js, Symfony et Node.js. Actuellement en fin d&apos;alternance au le Ministère 
+              expertise particulière en Nuxt.js/Vue.js, Symfony et Node.js. Actuellement en fin d&apos;alternance au Ministère 
               de l&apos;Intérieur, je développe des applications web pour la Préfecture de Police de Paris.
             </p>
             <p className="text-muted-foreground">
