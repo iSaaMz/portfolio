@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { Menu, X } from 'lucide-react';
+import ThemeToggle from '../ui/ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -73,6 +74,8 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
+        {/* dark mode button */}
+        <ThemeToggle />
 
         {/* Bouton menu mobile  */}
         <div className="md:hidden">
