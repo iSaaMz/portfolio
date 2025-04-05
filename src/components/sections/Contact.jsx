@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import emailjs from 'emailjs-com';
+
+const EMAILJS_SERVICE_ID = 'service_bzyg4pp';
+const EMAILJS_TEMPLATE_ID = 'template_s4x5i9s';
+const EMAILJS_USER_ID = '6hkz-MrEPXUlpBqb_'; //PUBLIC KEY
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,29 +17,114 @@ const Contact = () => {
   const [formStatus, setFormStatus] = useState({
     submitted: false,
     submitting: false,
-    error: false
+    error: false,
+    errorMessage: ''
   });
+  
+  const [formErrors, setFormErrors] = useState({});
   
   // gère les modifs des champs du formulaire
   const handleChange = (e) => {
+    const { name, value } = e.target;
+    
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
+    
+    // validation à la saisie
+    validateField(name, value);
   };
   
-  // gère envoi formulaire
+  // validation des champs
+  const validateField = (name, value) => {
+    let errors = {...formErrors};
+    
+    switch (name) {
+      case 'name':
+        if (value.trim() === '') {
+          errors.name = 'Le nom est requis';
+        } else if (value.length < 2) {
+          errors.name = 'Le nom doit contenir au moins 2 caractères';
+        } else {
+          delete errors.name;
+        }
+        break;
+      case 'email':
+        { const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (value.trim() === '') {
+          errors.email = 'L\'email est requis';
+        } else if (!emailRegex.test(value)) {
+          errors.email = 'Format d\'email invalide';
+        } else {
+          delete errors.email;
+        }
+        break; }
+      case 'subject':
+        if (value.trim() === '') {
+          errors.subject = 'Le sujet est requis';
+        } else if (value.length < 5) {
+          errors.subject = 'Le sujet doit contenir au moins 5 caractères';
+        } else {
+          delete errors.subject;
+        }
+        break;
+      case 'message':
+        if (value.trim() === '') {
+          errors.message = 'Le message est requis';
+        } else if (value.length < 10) {
+          errors.message = 'Le message doit contenir au moins 10 caractères';
+        } else {
+          delete errors.message;
+        }
+        break;
+      default:
+        break;
+    }
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+  
+  // valide tout le formulaire
+  const validateForm = () => {
+    const fields = ['name', 'email', 'subject', 'message'];
+    let isValid = true;
+    
+    fields.forEach(field => {
+      const fieldIsValid = validateField(field, formData[field]);
+      if (!fieldIsValid) isValid = false;
+    });
+    
+    return isValid;
+  };
+  
+  // gérer l'envoi du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    setFormStatus({ submitting: true, submitted: false, error: false });
+    // Validation complète avant envoi
+    if (!validateForm()) return;
+    
+    setFormStatus({ ...formStatus, submitting: true, submitted: false, error: false });
     
     try {
-      // simultation envoi du email avec délai
-      // TODO : à changer => en prod, utiliser un emailjs ou un autre service d'email pour l'envoi du mail
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // envoi du formulaire via EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message
+      };
       
-      // reset champs du formulaire après envoi
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_USER_ID
+      );
+      
+      // réinitialiser les champs du formulaire après envoi
       setFormData({
         name: '',
         email: '',
@@ -42,18 +132,45 @@ const Contact = () => {
         message: ''
       });
       
-      setFormStatus({ submitting: false, submitted: true, error: false });
+      setFormStatus({ submitting: false, submitted: true, error: false, errorMessage: '' });
       
-      // reset message succès
+      // réinitialiser le message de succès après un certain temps
       setTimeout(() => {
-        setFormStatus({ submitting: false, submitted: false, error: false });
+        setFormStatus({ submitting: false, submitted: false, error: false, errorMessage: '' });
       }, 5000);
       
     } catch (error) {
       console.error("Error sending message:", error);
-      setFormStatus({ submitting: false, submitted: false, error: true });
+      setFormStatus({ 
+        submitting: false, 
+        submitted: false, 
+        error: true,
+        errorMessage: 'Une erreur s\'est produite lors de l\'envoi du message. Veuillez réessayer plus tard.'
+      });
     }
   };
+  
+  // animation de notification toast
+  const Toast = ({ message, type, onClose }) => (
+    <div className={`fixed bottom-4 right-4 z-50 p-4 rounded-lg shadow-lg flex items-center gap-3 ${
+      type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+    } animate-in slide-in-from-right-full`}>
+      {type === 'success' ? 
+        <CheckCircle size={20} className="text-green-600" /> : 
+        <AlertCircle size={20} className="text-red-600" />
+      }
+      <p>{message}</p>
+      <button 
+        onClick={onClose}
+        className="ml-2 p-1 rounded-full hover:bg-white/20"
+        aria-label="Fermer"
+      >
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z" fill="currentColor" />
+        </svg>
+      </button>
+    </div>
+  );
   
   return (
     <section id="contact" className="section">
@@ -162,9 +279,14 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-background"
+                      className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-background ${
+                        formErrors.name ? 'border-red-500' : 'border-input'
+                      }`}
                       placeholder="Votre nom"
                     />
+                    {formErrors.name && (
+                      <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>
+                    )}
                   </div>
                   
                   <div>
@@ -181,9 +303,14 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-background"
+                      className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-background ${
+                        formErrors.email ? 'border-red-500' : 'border-input'
+                      }`}
                       placeholder="votre.email@exemple.com"
                     />
+                    {formErrors.email && (
+                      <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>
+                    )}
                   </div>
                 </div>
                 
@@ -201,9 +328,14 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-background"
+                    className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-background ${
+                      formErrors.subject ? 'border-red-500' : 'border-input'
+                    }`}
                     placeholder="Sujet de votre message"
                   />
+                  {formErrors.subject && (
+                    <p className="text-red-500 text-xs mt-1">{formErrors.subject}</p>
+                  )}
                 </div>
                 
                 <div>
@@ -220,9 +352,14 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows="5"
-                    className="w-full px-4 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-background resize-none"
+                    className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-background resize-none ${
+                      formErrors.message ? 'border-red-500' : 'border-input'
+                    }`}
                     placeholder="Votre message..."
                   ></textarea>
+                  {formErrors.message && (
+                    <p className="text-red-500 text-xs mt-1">{formErrors.message}</p>
+                  )}
                 </div>
                 
                 <button
@@ -245,19 +382,22 @@ const Contact = () => {
                     </>
                   )}
                 </button>
-                
-                {formStatus.error && (
-                  <div className="p-3 bg-red-100 text-red-600 rounded-md text-sm">
-                    Une erreur s&apos;est produite lors de l&apos;envoi du message. Veuillez réessayer plus tard.
-                  </div>
-                )}
               </form>
             )}
           </div>
         </div>
       </div>
+      
+      {/* Notification Toast */}
+      {formStatus.error && (
+        <Toast 
+          message={formStatus.errorMessage}
+          type="error"
+          onClose={() => setFormStatus({ ...formStatus, error: false })}
+        />
+      )}
     </section>
   );
-};
+}
 
 export default Contact;
