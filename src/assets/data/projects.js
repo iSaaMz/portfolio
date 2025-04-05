@@ -141,6 +141,70 @@ export const projectsData = [
       github: "https://github.com",
       demo: null,
       category: "Applications métier"
+    },
+    {
+      id: 9,
+      title: "CoplayLab",
+      description: "Hackathon WorkAdventure 2024 - Développement d'une plateforme de co-visionnage de vidéos YouTube en temps réel.",
+      image: "/assets/images/projects/coplaylab.png",
+      technologies: ["HTML", "CSS", "TypeScript", "Google Cloud Console", "API YouTube"],
+      features: [
+        "Téléportation d'un joueur spécifique sur une autre map (exclusion)",
+        "Système de sondage interactif (création, diffusion, participation et affichage des résultats)",
+        "Recherche et lancement des vidéos via l'API YouTube",
+        "Animation et intégration d'effets sonores et visuels",
+        "Barre de réaction dynamique avec effets sonores"
+      ],
+      github: "https://github.com/iSaaMz/CoplayLab",
+      demo: "https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-hero-goto",
+      category: "Applications métier",
+      details: "WorkAdventure est une plateforme permettant de concevoir des mondes virtuels collaboratifs entièrement personnalisables. Avec votre avatar, vous pouvez interagir spontanément avec vos collègues, clients, partenaires, etc. La plateforme est 100% française, conforme au RGPD et open source."
+    },
+    {
+      id: 10,
+      title: "Terrain Confus",
+      description: "Projet SEO - Optimisation du référencement pour apparaître en première position sur Google.",
+      image: "/assets/images/projects/terrain-confus.png",
+      technologies: ["Vue.js", "Tailwind CSS", "JavaScript", "HTML", "CSS", "Google Lighthouse", "Google Search Console"],
+      features: [
+        "Optimisation SEO avancée",
+        "Mise en place de sitemap.xml et robots.txt",
+        "Tests de performance avec Google Lighthouse",
+        "Suivi des performances avec Google Search Console"
+      ],
+      github: "https://github.com/iSaaMz/terrain-confus",
+      demo: "https://www.terrain-confus-info.com/",
+      category: "Applications métier",
+    },
+    {
+      id: 10,
+      title: "Mon portfolio",
+      description: "Site web personnel présentant mon parcours, mes compétences et mes projets.",
+      image: "/assets/images/projects/portfolio-sami.png",
+      technologies: [
+        "React", 
+        "Vite", 
+        "TailwindCSS", 
+        "JavaScript", 
+        "Framer Motion", 
+        "React Scroll", 
+        "File-Saver"
+      ],
+      features: [
+        "Design responsive adapté à tous les appareils",
+        "Interface moderne avec animations fluides et sections interactives",
+        "Curseur personnalisé pixelisé avec effets de lueur",
+        "Thème sombre/clair avec toggle",
+        "Filtrage dynamique des projets par catégorie",
+        "Affichage détaillé des compétences techniques avec niveau de maîtrise",
+        "Chronologie interactive pour le parcours et les expériences",
+        "Formulaire de contact avec validation",
+        "Téléchargement de CV directement depuis le site",
+        "Présentation complète de tous mes projets avec détails techniques"
+      ],
+      github: "https://github.com/iSaaMz/portfolio",
+      demo: "https://www.samiassiakh.fr/",
+      category: "Portfolio"
     }
   ];  
   
