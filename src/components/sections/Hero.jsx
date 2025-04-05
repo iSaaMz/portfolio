@@ -43,6 +43,15 @@ const Hero = () => {
               innovantes et performantes.
             </p>
 
+            <p className={`text-lg md:text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+              Actuellement en fin d&apos;études et bientôt en fin de contrat au Ministère de l&apos;Intérieur,
+              je suis actuellement à la recherche d&apos;un poste en tant que développeur full-stack.
+            </p>
+
+            <p className={`text-lg md:text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+              N&apos;hésitez pas à jeter un oeil à mon CV et à me contacter si vous êtes intéressé par mon profil !
+            </p>
+
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Link
                 to="contact"

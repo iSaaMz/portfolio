@@ -14,6 +14,18 @@ const Experience = () => {
 
   const experiences = [
     {
+      title: "À la recherche d'un CDI...",
+      type: "CDI",
+      company: "?",
+      location: "?",
+      period: "1er Octobre 2025",
+      description: [
+        "A la recherche d'un CDI dans le développement web ou mobile à partir du 1er Octobre 2025",
+      ],
+      technologies: [""],
+      image: ""
+    },
+    {
       title: "Développeur d'applications web",
       type: "Alternance",
       company: "Ministère de l'Intérieur - Préfecture de Police de Paris",
