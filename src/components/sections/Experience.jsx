@@ -1,6 +1,17 @@
-import { Briefcase, Building, Calendar } from 'lucide-react';
+import { useState } from 'react';
+import { Briefcase, Building, Calendar, ChevronDown, ChevronUp } from 'lucide-react';
 
 const Experience = () => {
+  const [expandedExp, setExpandedExp] = useState(null);
+  
+  const toggleExpansion = (index) => {
+    if (expandedExp === index) {
+      setExpandedExp(null);
+    } else {
+      setExpandedExp(index);
+    }
+  };
+
   const experiences = [
     {
       title: "Développeur d'applications web",
@@ -69,7 +80,11 @@ const Experience = () => {
                 </div>
               </div>
               
-              <div className="timeline-content bg-card hover:shadow-md transition-shadow">
+              <div 
+                className={`timeline-content bg-card hover:shadow-md transition-all duration-300 ${
+                  expandedExp === index ? 'shadow-lg border-primary' : ''
+                }`}
+              >
                 {/* Date mobile */}
                 <div className="md:hidden mb-4 flex items-center gap-2 text-muted-foreground">
                   <Calendar size={18} />
@@ -90,9 +105,20 @@ const Experience = () => {
                   
                   <div className="flex-1">
                     <div className="flex flex-col">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary w-fit mb-2">
-                        {experience.type}
-                      </span>
+                      <div className="flex justify-between items-start">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary w-fit mb-2">
+                          {experience.type}
+                        </span>
+                        
+                        <button 
+                          onClick={() => toggleExpansion(index)}
+                          className="ml-auto text-primary hover:text-primary/80 transition-colors p-1 rounded-full"
+                          aria-label={expandedExp === index ? "Réduire" : "Développer"}
+                        >
+                          {expandedExp === index ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                        </button>
+                      </div>
+                      
                       <h3 className="text-xl font-semibold">{experience.title}</h3>
                       
                       <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mt-2 text-muted-foreground">
@@ -107,23 +133,27 @@ const Experience = () => {
                       </div>
                     </div>
                     
-                    <ul className="mt-4 space-y-2 list-disc list-inside text-muted-foreground">
-                      {experience.description.map((item, i) => (
-                        <li key={i}>{item}</li>
-                      ))}
-                    </ul>
-                    
-                    {experience.technologies.length > 0 && (
-                      <div className="mt-4">
-                        <div className="flex flex-wrap gap-2">
-                          {experience.technologies.map((tech, i) => (
-                            <span key={i} className="px-2 py-1 bg-secondary text-secondary-foreground rounded-md text-sm">
-                              {tech}
-                            </span>
-                          ))}
+                    <div className={`mt-4 transition-all duration-300 overflow-hidden ${
+                      expandedExp === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}>
+                      <ul className="space-y-2 list-disc list-inside text-muted-foreground">
+                        {experience.description.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
+                      
+                      {experience.technologies.length > 0 && (
+                        <div className="mt-4">
+                          <div className="flex flex-wrap gap-2">
+                            {experience.technologies.map((tech, i) => (
+                              <span key={i} className="px-2 py-1 bg-secondary text-secondary-foreground rounded-md text-sm">
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
