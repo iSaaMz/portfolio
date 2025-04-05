@@ -30,11 +30,17 @@ const About = () => {
               architectures propres, à la sécurité des applications et aux pratiques DevOps.
             </p>
             <p className="text-muted-foreground">
-            Curieux et rigoureux, j&apos;apprécie autant le travail en équipe que les missions en autonomie, 
-            où je peux avancer efficacement dans l&apos;ombre sans difficulté. Travailler seul ne me pose 
-            aucun problème, bien au contraire : cela me permet de me concentrer pleinement et d&apos;être 
-            encore plus productif. Je continue à me former constamment pour rester à jour avec les dernières 
-            technologies et les meilleures pratiques du développement web.
+              Curieux et rigoureux, j&apos;apprécie autant le travail en équipe que les missions en autonomie, 
+              où je peux avancer efficacement dans l&apos;ombre sans difficulté. Travailler seul ne me pose 
+              aucun problème, bien au contraire : cela me permet de me concentrer pleinement et d&apos;être 
+              encore plus productif. Je continue à me former constamment pour rester à jour avec les dernières 
+              technologies et les meilleures pratiques du développement web.
+            </p>
+            <p className="text-muted-foreground">
+              En parallèle de mon activité de développeur, je suis également passionné par la musculation et le fitness. 
+              C&apos;est un mode de vie qui m&apos;a appris la discipline, la persévérance et le dépassement de soi — des valeurs que je 
+              retrouve aussi dans le code. J&apos;aspire à développer des projets autour de cette passion, et à proposer 
+              un jour du coaching personnalisé, en ligne ou en présentiel.
             </p>
             
             {/* Centres d'intêrets */}
@@ -43,7 +49,7 @@ const About = () => {
               <div className="flex flex-wrap gap-4">
                 <div className="flex items-center gap-2 px-4 py-2 bg-background rounded-full shadow-sm">
                   <Dumbbell size={18} className="text-primary" />
-                  <span>Sport</span>
+                  <span>Musculation & fitness</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-background rounded-full shadow-sm">
                   <Music size={18} className="text-primary" />
