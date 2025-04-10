@@ -152,8 +152,8 @@ const Education = () => {
               </div>
               
               <ul className="space-y-2">
-                <li>Resultat : en attente de resultat /990</li>
-                <li>Niveau validé :  B2 / C1 (en attente de resultat)</li>
+                <li>Resultat : 905 /990</li>
+                <li>Niveau validé :  B2 </li>
               </ul>
             </div>
           </div>
