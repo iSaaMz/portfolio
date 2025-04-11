@@ -205,6 +205,24 @@ export const projectsData = [
       github: "https://github.com/iSaaMz/portfolio",
       demo: "https://www.samiassiakh.fr/",
       category: "Portfolio"
+    },
+    {
+      id: 7,
+      title: "Recettes AI",
+      description: "Système de génération et de gestion de recettes de cuisine personnalisées avec analyse nutritionnelle.",
+      image: "/assets/images/projects/recette-ai.png",
+      technologies: ["React", "TailwindCSS", "shadcn", "TypeScript", "TanStack", "Airtable", "IA"],
+      features: [
+        "Visualisation de la liste des recettes créées",
+        "Détail des recettes avec analyse nutritionnelle complète (calories, protéines, glucides, lipides, vitamines, minéraux)",
+        "Recherche de recettes par nom, ingrédient ou type de plat",
+        "Création de nouvelles recettes personnalisées selon les ingrédients, nombre de personnes et intolérances",
+        "Interface utilisateur moderne et épurée",
+        "Base de données gérée avec Airtable"
+      ],
+      github: "https://github.com/LlamasScripters/RecettesAirtable",
+      demo: null,
+      category: "Applications métier",
     }
   ];  
   
