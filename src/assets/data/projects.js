@@ -177,7 +177,7 @@ export const projectsData = [
       category: "Applications métier",
     },
     {
-      id: 10,
+      id: 11,
       title: "Mon portfolio",
       description: "Site web personnel présentant mon parcours, mes compétences et mes projets.",
       image: "/assets/images/projects/portfolio-sami.png",
@@ -207,7 +207,7 @@ export const projectsData = [
       category: "Portfolio"
     },
     {
-      id: 7,
+      id: 12,
       title: "Recettes AI",
       description: "Système de génération et de gestion de recettes de cuisine personnalisées avec analyse nutritionnelle.",
       image: "/assets/images/projects/recette-ai.png",
