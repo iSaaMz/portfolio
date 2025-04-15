@@ -9,6 +9,7 @@ import Education from './components/sections/Education';
 import Projects from './components/sections/Projects';
 import Contact from './components/sections/Contact';
 import PixelCursor from './components/ui/PixelCursor';
+import { Analytics } from '@vercel/analytics/react';
 import './index.css';
 import './App.css'
 
@@ -51,6 +52,8 @@ function App() {
         <Contact />
       </main>
       <Footer />
+
+      <Analytics />
     </div>
   );
 }

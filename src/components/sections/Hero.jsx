@@ -2,6 +2,7 @@ import { ArrowDown, Download } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-scroll';
 import { saveAs } from 'file-saver';
+import { track } from '@vercel/analytics';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,6 +17,7 @@ const Hero = () => {
   // function gère téléchargement cv perso
   const handleDownloadCV = () => {
     saveAs('/cv-sami-assiakh.pdf', 'CV_Sami_Assiakh.pdf');
+    track('cv_download', { location: 'hero_section' });
   };
 
   return (
