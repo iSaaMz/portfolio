@@ -4,6 +4,14 @@ export const projectsData = [
       title: "HardWareHouse",
       description: "Plateforme de gestion de devis et de factures pour les PME du secteur informatique.",
       image: "/assets/images/projects/hardwarehouse.png",
+      images: [
+        "/assets/images/projects/hardwarehouse.png",
+        "/assets/images/projects/hardwarehouse-facture.png", 
+        "/assets/images/projects/hardwarehouse-dashboard.jpeg",
+        "/assets/images/projects/hardwarehouse-rapports-financiers.jpeg",
+        "/assets/images/projects/hardwarehouse-product-category.jpeg",
+        "/assets/images/projects/hardwarehouse-pdf-generated.jpeg", 
+      ],
       technologies: ["Symfony 6.2", "Twig", "JavaScript", "TailwindCSS", "SASS", "PostgreSQL"],
       features: [
         "Création, modification et suppression de devis et factures",
@@ -22,6 +30,20 @@ export const projectsData = [
       title: "TerraFlora",
       description: "Site web e-commerce de vente de fleurs avec fonctionnalités avancées et conformité RGPD.",
       image: "/assets/images/projects/terraflora.png",
+      images: [
+        "/assets/images/projects/terraflora.png",
+        "/assets/images/projects/terraflora-boutique.png",
+        "/assets/images/projects/terraflora-cart.png", 
+        "/assets/images/projects/terraflora-cookies.png", 
+        "/assets/images/projects/terraflora-dashboard.png", 
+        "/assets/images/projects/terraflora-list-products.png", 
+        "/assets/images/projects/terraflora-newproducts.png", 
+        "/assets/images/projects/terraflora-preferences.png", 
+        "/assets/images/projects/terraflora-product-detail.png",
+        "/assets/images/projects/terraflora-store.png",
+        "/assets/images/projects/terraflora-stripe.png",
+
+      ],
       technologies: ["Vue.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "TailwindCSS"],
       features: [
         "Authentification sécurisée avec confirmation par mail",
@@ -41,6 +63,9 @@ export const projectsData = [
       title: "VroomVroomAuto",
       description: "Plateforme de gestion de flotte de motos Triumph avec architecture clean code et microservices.",
       image: "/assets/images/projects/vroomvroomauto.png",
+      images: [
+        "/assets/images/projects/vroomvroomauto.png",
+      ],
       technologies: ["React", "Angular", "TypeScript", "Node.js", "Express.js", "NestJS", "PostgreSQL", "MongoDB"],
       features: [
         "Double front-end en React et Angular",
@@ -60,6 +85,10 @@ export const projectsData = [
       title: "Chifoumi",
       description: "Jeu de Pierre-Feuille-Ciseaux développé en React avec appels à une API existante.",
       image: "/assets/images/projects/chifoumi.png",
+      images: [
+        // "/assets/images/projects/terraflora.png",
+        // "/assets/images/projects/terraflora.png", 
+      ],
       technologies: ["React", "JSX", "API Rest"],
       features: [
         "Interface de jeu interactive",
@@ -76,6 +105,10 @@ export const projectsData = [
       title: "Pipeline CI/CD pour Microservices",
       description: "Mise en place d'un pipeline CI/CD complet pour une application e-commerce en microservices.",
       image: "/assets/images/projects/cicd.png",
+      images: [
+        // "/assets/images/projects/terraflora.png",
+        // "/assets/images/projects/terraflora.png", 
+      ],
       technologies: ["GitLab CI/CD", "Docker", "Docker Swarm", "SonarQube", "Trivy", "Snyk", "Prometheus", "Grafana"],
       features: [
         "Configuration de GitLab CI/CD pour différents environnements",
@@ -94,6 +127,10 @@ export const projectsData = [
       title: "TypeScript et Domain-Driven Design",
       description: "Cours avancé sur TypeScript et Domain-Driven Design pour le développement d'API Node.js.",
       image: "/assets/images/projects/ts-ddd-node.png",
+      images: [
+        // "/assets/images/projects/terraflora.png",
+        // "/assets/images/projects/terraflora.png", 
+      ],
       technologies: ["TypeScript", "Node.js", "Express.js", "TypeORM", "Postman"],
       features: [
         "Documentation de cours complète",
@@ -111,6 +148,10 @@ export const projectsData = [
       title: "Airtable Portfolio",
       description: "Portfolio de la filière Ingénierie du Web utilisant Airtable pour la gestion des données.",
       image: "/assets/images/projects/airtable-portfolio.png",
+      images: [
+        // "/assets/images/projects/terraflora.png",
+        // "/assets/images/projects/terraflora.png", 
+      ],
       technologies: ["Nuxt.js", "Vue.js", "API Airtable"],
       features: [
         "Liste des projets étudiants",
@@ -147,6 +188,10 @@ export const projectsData = [
       title: "CoplayLab",
       description: "Hackathon WorkAdventure 2024 - Développement d'une plateforme de co-visionnage de vidéos YouTube en temps réel.",
       image: "/assets/images/projects/coplaylab.png",
+      images: [
+        // "/assets/images/projects/terraflora.png",
+        // "/assets/images/projects/terraflora.png", 
+      ],
       technologies: ["HTML", "CSS", "TypeScript", "Google Cloud Console", "API YouTube"],
       features: [
         "Téléportation d'un joueur spécifique sur une autre map (exclusion)",
@@ -165,6 +210,10 @@ export const projectsData = [
       title: "Terrain Confus",
       description: "Projet SEO - Optimisation du référencement pour apparaître en première position sur Google.",
       image: "/assets/images/projects/terrain-confus.png",
+      images: [
+        // "/assets/images/projects/terraflora.png",
+        // "/assets/images/projects/terraflora.png", 
+      ],
       technologies: ["Vue.js", "Tailwind CSS", "JavaScript", "HTML", "CSS", "Google Lighthouse", "Google Search Console"],
       features: [
         "Optimisation SEO avancée",
@@ -211,6 +260,10 @@ export const projectsData = [
       title: "Recettes AI",
       description: "Système de génération et de gestion de recettes de cuisine personnalisées avec analyse nutritionnelle.",
       image: "/assets/images/projects/recette-ai.png",
+      images: [
+        // "/assets/images/projects/terraflora.png",
+        // "/assets/images/projects/terraflora.png", 
+      ],
       technologies: ["React", "TailwindCSS", "shadcn", "TypeScript", "TanStack", "Airtable", "IA"],
       features: [
         "Visualisation de la liste des recettes créées",
