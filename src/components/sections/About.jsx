@@ -1,4 +1,7 @@
 import { User, Mail, MapPin, Phone, Briefcase, GraduationCap, Music, Dumbbell, PaintBucket } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
+import { Badge } from '../ui/badge';
+import { Progress } from '../ui/progress';
 
 const About = () => {
   const personalInfo = [
@@ -17,126 +20,131 @@ const About = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Description */}
-          <div className="space-y-6 animate-on-scroll">
-            <h3 className="text-2xl font-semibold">Qui suis-je?</h3>
-            <p className="text-muted-foreground">
-              Je suis un développeur full-stack passionné par les technologies web et mobile, avec une 
-              expertise particulière en Nuxt.js/Vue.js, Symfony et Node.js. Actuellement en fin d&apos;alternance au Ministère 
-              de l&apos;Intérieur, je développe des applications web pour la Préfecture de Police de Paris.
-            </p>
-            <p className="text-muted-foreground">
-              J&apos;aime relever des défis techniques et créer des solutions innovantes qui répondent 
-              parfaitement aux besoins des utilisateurs. Je m&apos;intéresse particulièrement aux 
-              architectures propres, à la sécurité des applications et aux pratiques DevOps.
-            </p>
-            <p className="text-muted-foreground">
-              Curieux et rigoureux, j&apos;apprécie autant le travail en équipe que les missions en autonomie, 
-              où je peux avancer efficacement dans l&apos;ombre sans difficulté. Travailler seul ne me pose 
-              aucun problème, bien au contraire : cela me permet de me concentrer pleinement et d&apos;être 
-              encore plus productif. Je continue à me former constamment pour rester à jour avec les dernières 
-              technologies et les meilleures pratiques du développement web.
-            </p>
-            <p className="text-muted-foreground">
-              En parallèle de mon activité de développeur, je suis également passionné par la musculation et le fitness. 
-              C&apos;est un mode de vie qui m&apos;a appris la discipline, la persévérance et le dépassement de soi — des valeurs que je 
-              retrouve aussi dans le code. J&apos;aspire à développer des projets autour de cette passion, et à proposer 
-              un jour du coaching personnalisé, en ligne ou en présentiel.
-            </p>
-            
-            {/* Centres d'intêrets */}
-            <div>
-              <h3 className="text-xl font-semibold mb-3">Centres d&apos;intérêt</h3>
-              <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-2 px-4 py-2 bg-background rounded-full shadow-sm">
-                  <Dumbbell size={18} className="text-primary" />
-                  <span>Musculation & fitness</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-background rounded-full shadow-sm">
-                  <Music size={18} className="text-primary" />
-                  <span>Musées & Expositions</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-background rounded-full shadow-sm">
-                  <PaintBucket size={18} className="text-primary" />
-                  <span>Activités manuelles</span>
+          <Card className="animate-on-scroll">
+            <CardHeader>
+              <CardTitle>Qui suis-je?</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-muted-foreground">
+                Je suis un développeur full-stack passionné par les technologies web et mobile, avec une 
+                expertise particulière en Nuxt.js/Vue.js, Symfony et Node.js. Actuellement en fin d&apos;alternance au Ministère 
+                de l&apos;Intérieur, je développe des applications web pour la Préfecture de Police de Paris.
+              </p>
+              <p className="text-muted-foreground">
+                J&apos;aime relever des défis techniques et créer des solutions innovantes qui répondent 
+                parfaitement aux besoins des utilisateurs. Je m&apos;intéresse particulièrement aux 
+                architectures propres, à la sécurité des applications et aux pratiques DevOps.
+              </p>
+              <p className="text-muted-foreground">
+                Curieux et rigoureux, j&apos;apprécie autant le travail en équipe que les missions en autonomie, 
+                où je peux avancer efficacement dans l&apos;ombre sans difficulté. Travailler seul ne me pose 
+                aucun problème, bien au contraire : cela me permet de me concentrer pleinement et d&apos;être 
+                encore plus productif. Je continue à me former constamment pour rester à jour avec les dernières 
+                technologies et les meilleures pratiques du développement web.
+              </p>
+              <p className="text-muted-foreground">
+                En parallèle de mon activité de développeur, je suis également passionné par la musculation et le fitness. 
+                C&apos;est un mode de vie qui m&apos;a appris la discipline, la persévérance et le dépassement de soi — des valeurs que je 
+                retrouve aussi dans le code. J&apos;aspire à développer des projets autour de cette passion, et à proposer 
+                un jour du coaching personnalisé, en ligne ou en présentiel.
+              </p>
+              
+              {/* Centres d'intêrets */}
+              <div className="pt-4">
+                <h4 className="text-lg font-semibold mb-3">Centres d&apos;intérêt</h4>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary" className="flex items-center gap-2">
+                    <Dumbbell size={16} />
+                    Musculation & fitness
+                  </Badge>
+                  <Badge variant="secondary" className="flex items-center gap-2">
+                    <Music size={16} />
+                    Musées & Expositions
+                  </Badge>
+                  <Badge variant="secondary" className="flex items-center gap-2">
+                    <PaintBucket size={16} />
+                    Activités manuelles
+                  </Badge>
                 </div>
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
           
           {/* Infos personnelles */}
-          <div className="animate-on-scroll">
-            <h3 className="text-2xl font-semibold mb-6">Informations personnelles</h3>
-            
-            <div className="grid grid-cols-1 gap-6">
-              {personalInfo.map((item, index) => (
-                <div key={index} className="flex items-start gap-4 pb-4 border-b border-border">
-                  <div className="flex-shrink-0 p-3 bg-primary/10 text-primary rounded-lg">
-                    {item.icon}
+          <div className="space-y-6 animate-on-scroll">
+            <Card>
+              <CardHeader>
+                <CardTitle>Informations personnelles</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {personalInfo.map((item, index) => (
+                  <div key={index} className="flex items-center gap-4">
+                    <div className="flex-shrink-0 p-2 bg-primary/10 text-primary rounded-lg">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <span className="block text-sm text-muted-foreground">{item.label}</span>
+                      <span className="block font-medium">{item.value}</span>
+                    </div>
                   </div>
-                  <div>
-                    <span className="block text-sm text-muted-foreground">{item.label}</span>
-                    <span className="block font-medium">{item.value}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </CardContent>
+            </Card>
             
             {/* Langues */}
-            <div className="mt-8">
-              <h3 className="text-xl font-semibold mb-4">Langues</h3>
-              <div className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>Langues</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
                 <div>
-                  <div className="flex justify-between mb-1">
-                    <span>Français</span>
-                    <span>Natif</span>
+                  <div className="flex justify-between mb-2">
+                    <span className="font-medium">Français</span>
+                    <Badge variant="outline">Natif</Badge>
                   </div>
-                  <div className="w-full bg-muted rounded-full h-2">
-                    <div className="bg-primary h-2 rounded-full" style={{ width: '100%' }}></div>
-                  </div>
+                  <Progress value={100} className="h-2" />
                 </div>
                 <div>
-                  <div className="flex justify-between mb-1">
-                    <span>Anglais</span>
-                    <span>C1</span>
+                  <div className="flex justify-between mb-2">
+                    <span className="font-medium">Anglais</span>
+                    <Badge variant="outline">C1</Badge>
                   </div>
-                  <div className="w-full bg-muted rounded-full h-2">
-                    <div className="bg-primary h-2 rounded-full" style={{ width: '90%' }}></div>
-                  </div>
+                  <Progress value={90} className="h-2" />
                 </div>
                 <div>
-                  <div className="flex justify-between mb-1">
-                    <span>Allemand</span>
-                    <span>B2</span>
+                  <div className="flex justify-between mb-2">
+                    <span className="font-medium">Allemand</span>
+                    <Badge variant="outline">B2</Badge>
                   </div>
-                  <div className="w-full bg-muted rounded-full h-2">
-                    <div className="bg-primary h-2 rounded-full" style={{ width: '70%' }}></div>
-                  </div>
+                  <Progress value={70} className="h-2" />
                 </div>
                 <div>
-                  <div className="flex justify-between mb-1">
-                    <span>Kabyle</span>
-                    <span>Notions</span>
+                  <div className="flex justify-between mb-2">
+                    <span className="font-medium">Kabyle</span>
+                    <Badge variant="outline">Notions</Badge>
                   </div>
-                  <div className="w-full bg-muted rounded-full h-2">
-                    <div className="bg-primary h-2 rounded-full" style={{ width: '25%' }}></div>
-                  </div>
+                  <Progress value={25} className="h-2" />
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
         
         {/* Aptitudes personnelles */}
-        <div className="mt-16 animate-on-scroll">
-          <h3 className="text-2xl font-semibold mb-6 text-center">Aptitudes personnelles</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {['Autonomie', 'Rigueur', 'Créativité', 'Curiosité', 'Travail d\'équipe', 'Adaptation'].map((quality, index) => (
-              <div key={index} className="bg-background rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow">
-                <span className="font-medium">{quality}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        <Card className="mt-16 animate-on-scroll">
+          <CardHeader>
+            <CardTitle className="text-center">Aptitudes personnelles</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+              {['Autonomie', 'Rigueur', 'Créativité', 'Curiosité', 'Travail d\'équipe', 'Adaptation'].map((quality, index) => (
+                <Badge key={index} variant="secondary" className="justify-center py-2 text-center">
+                  {quality}
+                </Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );

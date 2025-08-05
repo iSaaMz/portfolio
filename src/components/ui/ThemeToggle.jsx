@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
+import { Button } from './button';
 
 const ThemeToggle = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    // Vérifie les préférences de l'utilisateur
     const storedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -29,13 +29,14 @@ const ThemeToggle = () => {
   };
 
   return (
-    <button 
+    <Button 
+      variant="ghost"
+      size="icon"
       onClick={toggleTheme}
-      className="p-2 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
       aria-label={isDarkMode ? "Passer au mode clair" : "Passer au mode sombre"}
     >
-      {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-    </button>
+      {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+    </Button>
   );
 };
 

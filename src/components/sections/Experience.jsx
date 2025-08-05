@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { Briefcase, Building, Calendar, ChevronDown, ChevronUp } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Badge } from '../ui/badge';
+import { Button } from '../ui/button';
+import { Separator } from '../ui/separator';
 
 const Experience = () => {
   const [expandedExp, setExpandedExp] = useState(null);
@@ -79,97 +83,77 @@ const Experience = () => {
       <div className="container">
         <h2 className="section-title">Expérience professionnelle</h2>
         
-        <div className="timeline">
+        <div className="space-y-6">
           {experiences.map((experience, index) => (
-            <div key={index} className="timeline-item animate-on-scroll">
-              <div className="timeline-marker"></div>
-              
-              {/* Date desktop */}
-              <div className="hidden md:block timeline-date">
-                <div className="flex items-center justify-end gap-2">
-                  <Calendar size={18} className="text-primary" />
-                  <span>{experience.period}</span>
-                </div>
-              </div>
-              
-              <div 
-                className={`timeline-content bg-card hover:shadow-md transition-all duration-300 ${
-                  expandedExp === index ? 'shadow-lg border-primary' : ''
-                }`}
-              >
-                {/* Date mobile */}
-                <div className="md:hidden mb-4 flex items-center gap-2 text-muted-foreground">
-                  <Calendar size={18} />
-                  <span>{experience.period}</span>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  {/* logo/image entreprise */}
-                  {experience.image && (
-                    <div className="hidden sm:block flex-shrink-0 w-16 h-16 rounded-md overflow-hidden border border-border">
-                      <img 
-                        src={experience.image} 
-                        alt={`Logo ${experience.company}`} 
-                        className="w-full h-full object-cover object-center"
-                      />
-                    </div>
-                  )}
-                  
-                  <div className="flex-1">
-                    <div className="flex flex-col">
-                      <div className="flex justify-between items-start">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary w-fit mb-2">
-                          {experience.type}
-                        </span>
-                        
-                        <button 
-                          onClick={() => toggleExpansion(index)}
-                          className="ml-auto text-primary hover:text-primary/80 transition-colors p-1 rounded-full"
-                          aria-label={expandedExp === index ? "Réduire" : "Développer"}
-                        >
-                          {expandedExp === index ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                        </button>
+            <Card key={index} className="animate-on-scroll transition-all duration-300 hover:shadow-lg">
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div className="flex items-start gap-4">
+                    {experience.image && (
+                      <div className="hidden sm:block flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-border">
+                        <img 
+                          src={experience.image} 
+                          alt={`Logo ${experience.company}`} 
+                          className="w-full h-full object-cover object-center"
+                        />
                       </div>
-                      
-                      <h3 className="text-xl font-semibold">{experience.title}</h3>
-                      
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mt-2 text-muted-foreground">
-                        <div className="flex items-center gap-1.5">
-                          <Building size={16} />
+                    )}
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <Badge variant="outline">{experience.type}</Badge>
+                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                          <Calendar size={14} />
+                          {experience.period}
+                        </div>
+                      </div>
+                      <CardTitle className="text-lg">{experience.title}</CardTitle>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-1">
+                          <Building size={14} />
                           <span>{experience.company}</span>
                         </div>
-                        <div className="flex items-center gap-1.5">
-                          <Briefcase size={16} />
+                        <div className="flex items-center gap-1">
+                          <Briefcase size={14} />
                           <span>{experience.location}</span>
                         </div>
                       </div>
                     </div>
-                    
-                    <div className={`mt-4 transition-all duration-300 overflow-hidden ${
-                      expandedExp === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                    }`}>
-                      <ul className="space-y-2 list-disc list-inside text-muted-foreground">
-                        {experience.description.map((item, i) => (
-                          <li key={i}>{item}</li>
-                        ))}
-                      </ul>
-                      
-                      {experience.technologies.length > 0 && (
-                        <div className="mt-4">
-                          <div className="flex flex-wrap gap-2">
-                            {experience.technologies.map((tech, i) => (
-                              <span key={i} className="px-2 py-1 bg-secondary text-secondary-foreground rounded-md text-sm">
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
                   </div>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    onClick={() => toggleExpansion(index)}
+                    aria-label={expandedExp === index ? "Réduire" : "Développer"}
+                  >
+                    {expandedExp === index ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                  </Button>
                 </div>
-              </div>
-            </div>
+              </CardHeader>
+              
+              {expandedExp === index && (
+                <CardContent className="pt-0">
+                  <Separator className="mb-4" />
+                  <ul className="space-y-2 list-disc list-inside text-muted-foreground">
+                    {experience.description.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                  
+                  {experience.technologies.length > 0 && experience.technologies[0] !== "" && (
+                    <div className="mt-4">
+                      <h4 className="text-sm font-medium mb-2">Technologies utilisées</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {experience.technologies.map((tech, i) => (
+                          <Badge key={i} variant="secondary">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </CardContent>
+              )}
+            </Card>
           ))}
         </div>
       </div>

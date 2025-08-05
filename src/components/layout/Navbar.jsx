@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { Menu, X } from 'lucide-react';
+import { Button } from '../ui/button';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '../ui/sheet';
 import ThemeToggle from '../ui/ThemeToggle';
 
 const Navbar = () => {
@@ -58,7 +60,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop navigation */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <Link
               key={item.name}
@@ -68,49 +70,48 @@ const Navbar = () => {
               offset={-70}
               duration={500}
               activeClass="active-nav-link"
-              className="cursor-pointer text-foreground hover:text-primary transition-all py-2"
+              className="cursor-pointer text-foreground hover:text-primary transition-all py-2 font-medium"
             >
               {item.name}
             </Link>
           ))}
+          <ThemeToggle />
         </div>
-        {/* dark mode button */}
-        <ThemeToggle />
 
-        {/* Bouton menu mobile  */}
-        <div className="md:hidden">
-          <button 
-            onClick={toggleMenu} 
-            className="focus:outline-none text-foreground"
-            aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+        {/* Menu mobile avec Sheet */}
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Ouvrir le menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[280px] sm:w-[350px]">
+              <nav className="flex flex-col space-y-6 mt-8">
+                {navItems.map((item) => (
+                  <SheetClose key={item.name} asChild>
+                    <Link
+                      to={item.to}
+                      spy={true}
+                      smooth={true}
+                      offset={-70}
+                      duration={500}
+                      activeClass="active-nav-link"
+                      className="cursor-pointer text-foreground hover:text-primary transition-all py-2 font-medium text-lg"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  </SheetClose>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
 
-      {/* Navigation mobile */}
-      {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur shadow-md animate-fade-in">
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.to}
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-                activeClass="active-nav-link"
-                className="cursor-pointer text-foreground hover:text-primary transition-all py-2"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
     </nav>
   );
 };

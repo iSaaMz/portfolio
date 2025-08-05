@@ -1,4 +1,6 @@
 import { GraduationCap, Calendar, MapPin } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Badge } from '../ui/badge';
 
 const Education = () => {
   const educations = [
@@ -44,30 +46,13 @@ const Education = () => {
       <div className="container">
         <h2 className="section-title">Formation</h2>
         
-        <div className="timeline">
+        <div className="space-y-6">
           {educations.map((education, index) => (
-            <div key={index} className="timeline-item animate-on-scroll">
-              <div className="timeline-marker"></div>
-              
-              {/* Date desktop */}
-              <div className="hidden md:block timeline-date">
-                <div className="flex items-center justify-end gap-2">
-                  <Calendar size={18} className="text-primary" />
-                  <span>{education.period}</span>
-                </div>
-              </div>
-              
-              <div className="timeline-content bg-card hover:shadow-md transition-shadow">
-                {/* Date mobile */}
-                <div className="md:hidden mb-4 flex items-center gap-2 text-muted-foreground">
-                  <Calendar size={18} />
-                  <span>{education.period}</span>
-                </div>
-                
+            <Card key={index} className="animate-on-scroll transition-all duration-300 hover:shadow-lg">
+              <CardHeader>
                 <div className="flex items-start gap-4">
-                  {/* logo/image école */}
                   {education.image && (
-                    <div className="hidden sm:block flex-shrink-0 w-16 h-16 rounded-md overflow-hidden border border-border">
+                    <div className="hidden sm:block flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-border">
                       <img 
                         src={education.image} 
                         alt={`Logo ${education.institution}`} 
@@ -75,23 +60,27 @@ const Education = () => {
                       />
                     </div>
                   )}
-                  
-                  <div className="flex-1">
-                    <div className="mb-3">
-                      <h3 className="text-xl font-semibold">{education.degree}</h3>
-                      <div className="flex items-center gap-1.5 mt-2 text-muted-foreground">
-                        <MapPin size={16} />
-                        <span>{education.institution}</span>
-                      </div>
+                  <div className="space-y-2 flex-1">
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline" className="flex items-center gap-1">
+                        <Calendar size={12} />
+                        {education.period}
+                      </Badge>
                     </div>
-                    
-                    <p className="text-muted-foreground">
-                      {education.description}
-                    </p>
+                    <CardTitle className="text-lg">{education.degree}</CardTitle>
+                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                      <MapPin size={14} />
+                      <span>{education.institution}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  {education.description}
+                </p>
+              </CardContent>
+            </Card>
           ))}
         </div>
         
@@ -99,63 +88,72 @@ const Education = () => {
         <div className="mt-16 animate-on-scroll">
           <h3 className="text-2xl font-semibold mb-6 text-center">Certifications et compétences</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-primary/10 rounded-lg">
-                  <GraduationCap size={24} className="text-primary" />
-                </div>
-                <h4 className="text-lg font-semibold">Compétences linguistiques</h4>
-              </div>
-              
-              <ul className="space-y-2">
-                <li className="flex justify-between items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card className="transition-all duration-300 hover:shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <GraduationCap size={20} className="text-primary" />
+                  </div>
+                  Compétences linguistiques
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex justify-between items-center">
                   <span>Anglais</span>
-                  <span className="font-medium">C1</span>
-                </li>
-                <li className="flex justify-between items-center">
+                  <Badge>C1</Badge>
+                </div>
+                <div className="flex justify-between items-center">
                   <span>Allemand</span>
-                  <span className="font-medium">B2</span>
-                </li>
-                <li className="flex justify-between items-center">
+                  <Badge>B2</Badge>
+                </div>
+                <div className="flex justify-between items-center">
                   <span>Kabyle</span>
-                  <span className="font-medium">Notions</span>
-                </li>
-              </ul>
-            </div>
+                  <Badge variant="outline">Notions</Badge>
+                </div>
+              </CardContent>
+            </Card>
             
-            <div className="bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-primary/10 rounded-lg">
-                  <GraduationCap size={24} className="text-primary" />
-                </div>
-                <h4 className="text-lg font-semibold">Compétences transversales</h4>
-              </div>
-              
-              <ul className="space-y-2">
-                <li>Gestion de projet agile</li>
-                <li>Droit en technologies de l&apos;information, RGPD</li>
-                <li>Économie et comptabilité, marketing digital</li>
-                <li>Communication professionnelle</li>
-                <li>Business intelligence</li>
-              </ul>
-            </div>
+            <Card className="transition-all duration-300 hover:shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <GraduationCap size={20} className="text-primary" />
+                  </div>
+                  Compétences transversales
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li>• Gestion de projet agile</li>
+                  <li>• Droit en technologies de l&apos;information, RGPD</li>
+                  <li>• Économie et comptabilité, marketing digital</li>
+                  <li>• Communication professionnelle</li>
+                  <li>• Business intelligence</li>
+                </ul>
+              </CardContent>
+            </Card>
 
-            <div className="bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-primary/10 rounded-lg">
-                  <GraduationCap size={24} className="text-primary" />
+            <Card className="transition-all duration-300 hover:shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <GraduationCap size={20} className="text-primary" />
+                  </div>
+                  TOEIC
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span>Score</span>
+                  <Badge variant="secondary">905 / 990</Badge>
                 </div>
-                <h4 className="text-lg font-semibold">
-                Test of English for International Communication
-                </h4>
-              </div>
-              
-              <ul className="space-y-2">
-                <li>Resultat : 905 /990</li>
-                <li>Niveau validé :  B2 </li>
-              </ul>
-            </div>
+                <div className="flex justify-between items-center">
+                  <span>Niveau validé</span>
+                  <Badge>B2</Badge>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>

@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from 'emailjs-com';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { Textarea } from '../ui/textarea';
+import { Label } from '../ui/label';
+import { Alert, AlertDescription } from '../ui/alert';
 
 const EMAILJS_SERVICE_ID = 'service_bzyg4pp';
 const EMAILJS_TEMPLATE_ID = 'template_s4x5i9s';
@@ -179,222 +185,197 @@ const Contact = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact information */}
-          <div className="animate-on-scroll">
-            <h3 className="text-2xl font-semibold mb-6">Parlons de votre projet</h3>
-            <p className="text-muted-foreground mb-8 max-w-md">
-              Vous avez un projet en tête ou vous souhaitez discuter de possibilités de collaboration ? 
-              N&apos;hésitez pas à me contacter via le formulaire ou directement par email ou téléphone.
-            </p>
-            
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 p-3 bg-primary/10 text-primary rounded-lg">
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <h4 className="font-medium mb-1">Email</h4>
-                  <a 
-                    href="mailto:sami.assiakh@gmail.com" 
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    sami.assiakh@gmail.com
-                  </a>
-                </div>
-              </div>
+          <Card className="animate-on-scroll">
+            <CardHeader>
+              <CardTitle>Parlons de votre projet</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-muted-foreground">
+                Vous avez un projet en tête ou vous souhaitez discuter de possibilités de collaboration ? 
+                N&apos;hésitez pas à me contacter via le formulaire ou directement par email ou téléphone.
+              </p>
               
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 p-3 bg-primary/10 text-primary rounded-lg">
-                  <Phone size={24} />
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="flex-shrink-0 p-2 bg-primary/10 text-primary rounded-lg">
+                    <Mail size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-medium">Email</h4>
+                    <a 
+                      href="mailto:sami.assiakh@gmail.com" 
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      sami.assiakh@gmail.com
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-medium mb-1">Téléphone</h4>
-                  <a 
-                    href="tel:+33782282296" 
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    07 82 28 22 96
-                  </a>
+                
+                <div className="flex items-center gap-4">
+                  <div className="flex-shrink-0 p-2 bg-primary/10 text-primary rounded-lg">
+                    <Phone size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-medium">Téléphone</h4>
+                    <a 
+                      href="tel:+33782282296" 
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      07 82 28 22 96
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4">
+                  <div className="flex-shrink-0 p-2 bg-primary/10 text-primary rounded-lg">
+                    <MapPin size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-medium">Adresse</h4>
+                    <address className="text-muted-foreground not-italic">
+                      Argenteuil, Île-de-France, France
+                    </address>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4">
+                  <div className="flex-shrink-0 p-2 bg-primary/10 text-primary rounded-lg">
+                    <Linkedin size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-medium">LinkedIn</h4>
+                    <a 
+                      href="https://www.linkedin.com/in/sami-assiakh" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      linkedin.com/in/sami-assiakh
+                    </a>
+                  </div>
                 </div>
               </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 p-3 bg-primary/10 text-primary rounded-lg">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <h4 className="font-medium mb-1">Adresse</h4>
-                  <address className="text-muted-foreground not-italic">
-                    Argenteuil, Île-de-France, France
-                  </address>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 p-3 bg-primary/10 text-primary rounded-lg">
-                  <Linkedin size={24} />
-                </div>
-                <div>
-                  <h4 className="font-medium mb-1">LinkedIn</h4>
-                  <a 
-                    href="https://www.linkedin.com/in/sami-assiakh" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    linkedin.com/in/sami-assiakh
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
           
           {/* Contact form */}
-          <div className="bg-card border border-border rounded-lg p-6 shadow-sm animate-on-scroll">
-            <h3 className="text-xl font-semibold mb-6">Envoyez-moi un message</h3>
-            
-            {formStatus.submitted ? (
-              <div className="flex flex-col items-center justify-center py-8">
-                <div className="bg-green-100 text-green-600 rounded-full p-3 mb-4">
-                  <CheckCircle size={48} />
+          <Card className="animate-on-scroll">
+            <CardHeader>
+              <CardTitle>Envoyez-moi un message</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {formStatus.submitted ? (
+                <div className="flex flex-col items-center justify-center py-8">
+                  <div className="bg-green-100 text-green-600 rounded-full p-3 mb-4">
+                    <CheckCircle size={48} />
+                  </div>
+                  <h4 className="text-xl font-medium mb-2">Message envoyé avec succès !</h4>
+                  <p className="text-muted-foreground text-center">
+                    Merci pour votre message. Je vous répondrai dans les plus brefs délais.
+                  </p>
                 </div>
-                <h4 className="text-xl font-medium mb-2">Message envoyé avec succès !</h4>
-                <p className="text-muted-foreground text-center">
-                  Merci pour votre message. Je vous répondrai dans les plus brefs délais.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label 
-                      htmlFor="name" 
-                      className="block text-sm font-medium mb-1"
-                    >
-                      Nom
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Nom</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Votre nom"
+                        className={formErrors.name ? 'border-red-500' : ''}
+                      />
+                      {formErrors.name && (
+                        <p className="text-red-500 text-xs">{formErrors.name}</p>
+                      )}
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email</Label>
+                      <Input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="votre.email@exemple.com"
+                        className={formErrors.email ? 'border-red-500' : ''}
+                      />
+                      {formErrors.email && (
+                        <p className="text-red-500 text-xs">{formErrors.email}</p>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="subject">Sujet</Label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
                       onChange={handleChange}
-                      required
-                      className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-background ${
-                        formErrors.name ? 'border-red-500' : 'border-input'
-                      }`}
-                      placeholder="Votre nom"
+                      placeholder="Sujet de votre message"
+                      className={formErrors.subject ? 'border-red-500' : ''}
                     />
-                    {formErrors.name && (
-                      <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>
+                    {formErrors.subject && (
+                      <p className="text-red-500 text-xs">{formErrors.subject}</p>
                     )}
                   </div>
                   
-                  <div>
-                    <label 
-                      htmlFor="email" 
-                      className="block text-sm font-medium mb-1"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
                       onChange={handleChange}
-                      required
-                      className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-background ${
-                        formErrors.email ? 'border-red-500' : 'border-input'
-                      }`}
-                      placeholder="votre.email@exemple.com"
+                      rows={5}
+                      placeholder="Votre message..."
+                      className={formErrors.message ? 'border-red-500' : ''}
                     />
-                    {formErrors.email && (
-                      <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>
+                    {formErrors.message && (
+                      <p className="text-red-500 text-xs">{formErrors.message}</p>
                     )}
                   </div>
-                </div>
-                
-                <div>
-                  <label 
-                    htmlFor="subject" 
-                    className="block text-sm font-medium mb-1"
+                  
+                  <Button
+                    type="submit"
+                    disabled={formStatus.submitting}
+                    className="w-full"
+                    size="lg"
                   >
-                    Sujet
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-background ${
-                      formErrors.subject ? 'border-red-500' : 'border-input'
-                    }`}
-                    placeholder="Sujet de votre message"
-                  />
-                  {formErrors.subject && (
-                    <p className="text-red-500 text-xs mt-1">{formErrors.subject}</p>
-                  )}
-                </div>
-                
-                <div>
-                  <label 
-                    htmlFor="message" 
-                    className="block text-sm font-medium mb-1"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="5"
-                    className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-background resize-none ${
-                      formErrors.message ? 'border-red-500' : 'border-input'
-                    }`}
-                    placeholder="Votre message..."
-                  ></textarea>
-                  {formErrors.message && (
-                    <p className="text-red-500 text-xs mt-1">{formErrors.message}</p>
-                  )}
-                </div>
-                
-                <button
-                  type="submit"
-                  disabled={formStatus.submitting}
-                  className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 w-full disabled:opacity-70 disabled:cursor-not-allowed"
-                >
-                  {formStatus.submitting ? (
-                    <>
-                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Envoi en cours...
-                    </>
-                  ) : (
-                    <>
-                      <Send size={20} />
-                      Envoyer le message
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
-          </div>
+                    {formStatus.submitting ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Envoi en cours...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="mr-2 h-4 w-4" />
+                        Envoyer le message
+                      </>
+                    )}
+                  </Button>
+                </form>
+              )}
+            </CardContent>
+          </Card>
         </div>
       </div>
       
-      {/* Notification Toast */}
+      {/* Notification Alert */}
       {formStatus.error && (
-        <Toast 
-          message={formStatus.errorMessage}
-          type="error"
-          onClose={() => setFormStatus({ ...formStatus, error: false })}
-        />
+        <Alert className="fixed bottom-4 right-4 z-50 max-w-md bg-destructive text-destructive-foreground">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>
+            {formStatus.errorMessage}
+          </AlertDescription>
+        </Alert>
       )}
     </section>
   );

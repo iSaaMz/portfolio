@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-scroll';
 import { saveAs } from 'file-saver';
 import { track } from '@vercel/analytics';
+import { Button } from '../ui/button';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -61,17 +62,21 @@ const Hero = () => {
                 smooth={true}
                 offset={-70}
                 duration={500}
-                className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium shadow-md hover:shadow-lg transition-all cursor-pointer inline-flex items-center justify-center"
+                className="cursor-pointer"
               >
-                Me contacter
+                <Button size="lg" className="w-full sm:w-auto">
+                  Me contacter
+                </Button>
               </Link>
-              <button
+              <Button
+                variant="secondary"
+                size="lg"
                 onClick={handleDownloadCV}
-                className="bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-medium shadow-md hover:shadow-lg transition-all inline-flex items-center justify-center gap-2"
+                className="w-full sm:w-auto"
               >
-                <Download size={20} />
+                <Download className="mr-2 h-4 w-4" />
                 Télécharger mon CV
-              </button>
+              </Button>
             </div>
           </div>
 
