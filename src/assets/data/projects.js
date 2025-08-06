@@ -218,7 +218,7 @@ export const projectsData = [
       description: "Projet SEO - Optimisation du référencement pour apparaître en première position sur Google.",
       image: "/assets/images/projects/terrain-confus.png",
       images: [
-        // "/assets/images/projects/terraflora.png",
+        "/assets/images/projects/terrain-confus.png",
         // "/assets/images/projects/terraflora.png", 
       ],
       technologies: ["Vue.js", "Tailwind CSS", "JavaScript", "HTML", "CSS", "Google Lighthouse", "Google Search Console"],
@@ -266,11 +266,13 @@ export const projectsData = [
       id: 12,
       title: "Recettes AI",
       description: "Système de génération et de gestion de recettes de cuisine personnalisées avec analyse nutritionnelle.",
-      image: "/assets/images/projects/recette-ai.png",
+      image: "/assets/images/projects/recettes-ia-1.png",
       images: [
-        // "/assets/images/projects/terraflora.png",
-        // "/assets/images/projects/terraflora.png", 
-      ],
+        "/assets/images/projects/recettes-ia-1.png",
+        "/assets/images/projects/recettes-ia-2.png",
+        "/assets/images/projects/recettes-ia-3.png",
+        "/assets/images/projects/recettes-ia-4.png",
+        ],
       technologies: ["React", "TailwindCSS", "shadcn", "TypeScript", "TanStack", "Airtable", "IA"],
       features: [
         "Visualisation de la liste des recettes créées",
@@ -283,7 +285,52 @@ export const projectsData = [
       github: "https://github.com/LlamasScripters/RecettesAirtable",
       demo: null,
       category: "Applications métier",
-    }
+    },
+    {
+      id: 13,
+      title: "NyanChat",
+      description: "Application de messagerie instantanée en temps réel.",
+      image: "/assets/images/projects/nyanchat-1.png",
+      images: [
+        "/assets/images/projects/nyanchat-1.png",
+        "/assets/images/projects/nyanchat-2.png",
+        "/assets/images/projects/nyanchat-3.png",
+        "/assets/images/projects/nyanchat-4.png",
+        "/assets/images/projects/nyanchat-5.png",
+        "/assets/images/projects/nyanchat-6.png",
+        ],
+      technologies: ["NestJS", "React", "TailwindCSS", "JavaScript", "TypeScript", "Drizzle", "PostgreSQL", "Docker"],
+      features: [
+        "Inscription et connexion sécurisées",
+        "Création et gestion de salons de discussion",
+        "Chat en temps réel avec notifications",
+        "Personnalisation du profil",
+        "Interface moderne et conviviale",
+        "Base de données gérée avec PostgreSQL"
+      ],
+      github: "https://github.com/LlamasScripters/NyanChat",
+      demo: null,
+      category: "Applications métier",
+    },
+    {
+      id: 14,
+      title: "BondIA",
+      description: "Hackathon Services CEO 2025 - Développement d'une plateforme marketplace innovante qui permet de générer automatiquement des portfolios professionnels pour les prestataires grâce à l’Intelligence Artificielle.",
+      image: "/assets/images/projects/bondia.png",
+      images: [
+        "/assets/images/projects/bondia.png",
+        ],
+      technologies: ["Next.js", "TailwindCSS", "TypeScript", "Node.js","Google Gemini AI", "Vercel", "LangChain", "Express.js"],
+      features: [
+        "Génération automatique de portfolios via IA en 2 minutes",
+        "Feuilles de route personnalisées pour chaque service (Service Paths IA)",
+        "Marketplace hybride favorisant la collaboration humain-IA",
+        "Déploiement instantané des portfolios via Vercel",
+        ],
+      github: "https://github.com/LlamasScripters/BondAI",
+      demo: null,
+      category: "Applications métier",
+    },
   ];  
   
   export const projectCategories = [
