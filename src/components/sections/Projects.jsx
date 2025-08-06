@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import { projectsData, projectCategories } from '../../assets/data/projects';
 import { Github, ExternalLink, ChevronDown, ChevronUp, FolderKanban, Calendar, ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
@@ -34,6 +35,7 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, setCurrentIndex }) 
   const handleClose = (e) => {
     document.body.style.overflow = 'auto';
     document.body.style.overflowX = 'hidden';
+    document.body.style.cursor = 'auto';
     onClose(e);
   };
   
@@ -48,26 +50,38 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, setCurrentIndex }) 
     window.addEventListener('keydown', handleKeyDown);
     
     document.body.style.overflow = 'hidden';
+    document.body.style.cursor = 'default';
     
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'auto';
       document.body.style.overflowX = 'hidden';
+      document.body.style.cursor = 'auto';
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
+  return createPortal(
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 overflow-hidden"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 overflow-hidden"
       onClick={handleClose}
+      style={{ 
+        position: 'fixed', 
+        top: 0, 
+        left: 0, 
+        right: 0, 
+        bottom: 0, 
+        cursor: 'default !important',
+        pointerEvents: 'auto'
+      }}
     >
       <div className="relative w-full max-w-5xl h-full max-h-[90vh] flex flex-col">
         {/* Bouton de fermeture */}
         <button 
-          className="absolute top-2 right-2 z-20 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+          className="absolute top-2 right-2 z-20 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors cursor-pointer"
           onClick={handleClose}
           aria-label="Fermer"
+          style={{ cursor: 'pointer' }}
         >
           <X size={24} />
         </button>
@@ -78,16 +92,18 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, setCurrentIndex }) 
             <>
               <button
                 onClick={handlePrevImage}
-                className="absolute left-4 z-20 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-colors"
+                className="absolute left-4 z-20 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-colors cursor-pointer"
                 aria-label="Image précédente"
+                style={{ cursor: 'pointer' }}
               >
                 <ChevronLeft size={24} />
               </button>
               
               <button
                 onClick={handleNextImage}
-                className="absolute right-4 z-20 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-colors"
+                className="absolute right-4 z-20 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-colors cursor-pointer"
                 aria-label="Image suivante"
+                style={{ cursor: 'pointer' }}
               >
                 <ChevronRight size={24} />
               </button>
@@ -95,11 +111,12 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, setCurrentIndex }) 
           )}
           
           {/* Image actuelle */}
-          <div className="w-full h-full flex items-center justify-center" onClick={handleImageClick}>
+          <div className="w-full h-full flex items-center justify-center cursor-default" onClick={handleImageClick} style={{ cursor: 'default' }}>
             <img
               src={images[currentIndex]}
               alt={`Image en plein écran ${currentIndex + 1}`}
-              className="max-w-full max-h-full object-contain"
+              className="max-w-full max-h-full object-contain cursor-default"
+              style={{ cursor: 'default' }}
             />
           </div>
         </div>
@@ -114,9 +131,10 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, setCurrentIndex }) 
                   e.stopPropagation();
                   setCurrentIndex(index);
                 }}
-                className={`w-3 h-3 rounded-full transition-colors ${
+                className={`w-3 h-3 rounded-full transition-colors cursor-pointer ${
                   index === currentIndex ? 'bg-white' : 'bg-white/40'
                 }`}
+                style={{ cursor: 'pointer' }}
                 aria-label={`Aller à l'image ${index + 1}`}
               />
             ))}
@@ -128,7 +146,8 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, setCurrentIndex }) 
           {currentIndex + 1} / {images.length}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
