@@ -1,17 +1,28 @@
-import { ArrowDown, Download } from 'lucide-react';
+import { ArrowDown, Download, Sparkles, Code2, Palette } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-scroll';
 import { saveAs } from 'file-saver';
 import { track } from '@vercel/analytics';
 import { Button } from '../ui/button';
+import { Card, CardContent } from '../ui/card';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoaded(true);
     }, 100);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
 
@@ -22,21 +33,59 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-16 pb-8">
-      {/* bg gradient avec animation */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent -z-10"></div>
+    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-16 pb-8 overflow-hidden">
+      {/* Arrière-plan animé avec particles */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-transparent to-primary/5 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent -z-10"></div>
+      </div>
+      
+      {/* Particles flottantes */}
+      <div className="absolute inset-0 -z-5">
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute animate-pulse"
+            style={{
+              left: `${20 + i * 15}%`,
+              top: `${30 + (i % 3) * 20}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${3 + i * 0.5}s`
+            }}
+          >
+            <div className="w-2 h-2 bg-primary/20 rounded-full blur-sm animate-bounce" style={{ animationDelay: `${i * 0.3}s` }}></div>
+          </div>
+        ))}
+      </div>
+      
+      {/* Gradient suiveur de souris */}
+      <div 
+        className="absolute w-96 h-96 bg-gradient-radial from-primary/10 to-transparent rounded-full blur-3xl transition-all duration-300 ease-out pointer-events-none"
+        style={{
+          left: mousePosition.x - 192,
+          top: mousePosition.y - 192,
+          opacity: isHovering ? 0.6 : 0.3
+        }}
+      />
       
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-center">
           {/* text content avec animations améliorées */}
-          <div className={`md:w-3/5 space-y-6 mb-8 md:mb-0 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="flex flex-col">
-              <span className="text-lg md:text-xl text-muted-foreground">Bonjour, je suis</span>
-              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                Sami Assiakh
+          <div className={`md:w-3/5 space-y-6 mb-8 md:mb-0 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+               onMouseEnter={() => setIsHovering(true)}
+               onMouseLeave={() => setIsHovering(false)}>
+            <div className="flex flex-col relative">
+              <div className="flex items-center gap-2 mb-2">
+                <Sparkles className="w-5 h-5 text-primary animate-pulse" />
+                <span className="text-lg md:text-xl text-muted-foreground animate-fade-in-up">Bonjour, je suis</span>
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent relative group">
+                <span className="relative z-10">Sami Assiakh</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent blur-lg group-hover:blur-xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
               </h1>
-              <div className={`mt-3 text-2xl md:text-3xl font-medium text-foreground transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-                Développeur Full-Stack
+              <div className={`mt-3 flex items-center gap-3 text-2xl md:text-3xl font-medium text-foreground transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+                <Code2 className="w-7 h-7 text-primary/70 animate-pulse" style={{ animationDelay: '0.5s' }} />
+                <span>Développeur Full-Stack</span>
+                <Palette className="w-7 h-7 text-primary/70 animate-pulse" style={{ animationDelay: '1s' }} />
               </div>
             </div>
 
@@ -62,42 +111,67 @@ const Hero = () => {
                 smooth={true}
                 offset={-70}
                 duration={500}
-                className="cursor-pointer"
+                className="cursor-pointer group"
               >
-                <Button size="lg" className="w-full sm:w-auto">
-                  Me contacter
+                <Button size="lg" className="w-full sm:w-auto relative overflow-hidden group hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25">
+                  <span className="relative z-10">Me contacter</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                 </Button>
               </Link>
               <Button
                 variant="secondary"
                 size="lg"
                 onClick={handleDownloadCV}
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto relative overflow-hidden group hover:scale-105 transition-all duration-300 hover:shadow-lg"
               >
-                <Download className="mr-2 h-4 w-4" />
-                Télécharger mon CV
+                <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+                <span className="relative z-10">Télécharger mon CV</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
               </Button>
             </div>
           </div>
 
-          {/* image de profil */}
+          {/* image de profil élégante */}
           <div className="md:w-2/5 flex justify-center animate-on-scroll">
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary to-primary/40 animate-pulse"></div>
-              <img
-                src="/assets/images/sami.jpg"
-                alt="Sami Assiakh"
-                className="absolute inset-[6px] rounded-full object-cover border-4 border-background"
-                style={{ width: "calc(100% - 12px)", height: "calc(100% - 12px)" }}
-              />
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 group">
+              {/* Fond gradient subtil */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-primary/10 to-transparent blur-sm"></div>
+              
+              {/* Container image principal */}
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background shadow-2xl transition-all duration-500 group-hover:shadow-primary/20 group-hover:scale-105">
+                <img
+                  src="/assets/images/sami.jpg"
+                  alt="Sami Assiakh"
+                  className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110"
+                />
+                
+                {/* Overlay gradient au hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              
+              {/* Ring externe minimaliste */}
+              <div className="absolute -inset-2 rounded-full border border-primary/30 opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse"></div>
             </div>
           </div>
         </div>
 
-        {/* indacteur scroll */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
-          <span className="text-sm text-muted-foreground mb-2"></span>
-          <ArrowDown className="text-primary" size={24} />
+        {/* Indicateur de scroll amélioré */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+          <Link
+            to="about"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={500}
+            className="cursor-pointer group"
+          >
+            <Card className="bg-background/80 backdrop-blur-sm border-primary/20 shadow-lg animate-bounce-slow hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25">
+              <CardContent className="p-3 flex flex-col items-center">
+                <span className="text-xs text-muted-foreground mb-1 group-hover:text-primary transition-colors duration-200">Découvrir</span>
+                <ArrowDown className="text-primary animate-pulse" size={20} />
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </div>
     </section>

@@ -53,6 +53,7 @@ export const skillsData = [
       { name: "GitLab CI/CD", level: 75, icon: "/assets/icons/gitlab-cicd.svg" },
       { name: "Docker", level: 90, icon: "/assets/icons/docker.svg" },
       { name: "Docker Swarm", level: 75, icon: "/assets/icons/docker-swarm.png" },
+      { name: "Terraform", level: 65, icon: "/assets/icons/terraform.png" },
       { name: "Kubernetes", level: 65, icon: "/assets/icons/kubernetes.svg" },
       { name: "Ansible", level: 70, icon: "/assets/icons/ansible.svg" },
       { name: "Grafana", level: 60, icon: "/assets/icons/grafana.svg" },

@@ -107,10 +107,6 @@ const Education = () => {
                   <span>Allemand</span>
                   <Badge>B2</Badge>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span>Kabyle</span>
-                  <Badge variant="outline">Notions</Badge>
-                </div>
               </CardContent>
             </Card>
             
