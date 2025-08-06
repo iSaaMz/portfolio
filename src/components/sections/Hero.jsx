@@ -78,8 +78,10 @@ const Hero = () => {
                 <Sparkles className="w-5 h-5 text-primary animate-pulse" />
                 <span className="text-lg md:text-xl text-muted-foreground animate-fade-in-up">Bonjour, je suis</span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent relative group">
-                <span className="relative z-10">Sami Assiakh</span>
+              <h1 className="text-4xl md:text-6xl font-bold relative group">
+                <span className="relative z-10 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
+                  Sami Assiakh
+                </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent blur-lg group-hover:blur-xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
               </h1>
               <div className={`mt-3 flex items-center gap-3 text-2xl md:text-3xl font-medium text-foreground transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
