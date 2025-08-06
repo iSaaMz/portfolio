@@ -169,18 +169,25 @@ export const projectsData = [
       id: 8,
       title: "Gestion d'association sportive",
       description: "Application de gestion pour l'Association Sportive Omnisports de Pierrefitte-sur-Seine.",
-      image: "/assets/images/en-cours-de-dev.png",
-      technologies: ["Vue.js", "Tailwind CSS", "Node.js", "TypeScript", "Express.js", "PostgreSQL", "MongoDB"],
+      image: "/assets/images/projects/asp-hub-1.png",
+      images: [
+        "/assets/images/projects/asp-hub-1.png",
+        "/assets/images/projects/asp-hub-2.png",
+        "/assets/images/projects/asp-hub-3.png",
+      ],
+      technologies: ["React", "TanStack Router / Query", "Tailwind CSS", "Node.js", "TypeScript", "Express.js", "PostgreSQL", "MongoDB", "MinIO", "Docker"],
       features: [
         "Gestion des adhérents et des cotisations",
         "Organisation des activités sportives",
         "Gestion des événements socio-sportifs",
         "Administration et finances",
+        "Gestion des sports et des équipes",
+        "Blog",
         "Communication interne",
         "Interface adaptative (responsive)"
       ],
-      github: "https://github.com",
-      demo: null,
+      github: "https://github.com/LlamasScripters/ASP-hub",
+      demo: "https://mchegdali.cloud/",
       category: "Applications métier"
     },
     {
