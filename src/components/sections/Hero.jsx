@@ -142,7 +142,7 @@ const Hero = () => {
               {/* Container image principal */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background shadow-2xl transition-all duration-500 group-hover:shadow-primary/20 group-hover:scale-105">
                 <img
-                  src="/assets/images/vie.jpg"
+                  src="/assets/images/sami.jpg"
                   alt="Sami Assiakh"
                   className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110"
                 />
