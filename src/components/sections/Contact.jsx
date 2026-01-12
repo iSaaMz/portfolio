@@ -213,21 +213,6 @@ const Contact = () => {
                 
                 <div className="flex items-center gap-4">
                   <div className="flex-shrink-0 p-2 bg-primary/10 text-primary rounded-lg">
-                    <Phone size={20} />
-                  </div>
-                  <div>
-                    <h4 className="font-medium">Téléphone</h4>
-                    <a 
-                      href="tel:+33782282296" 
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      07 82 28 22 96
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-4">
-                  <div className="flex-shrink-0 p-2 bg-primary/10 text-primary rounded-lg">
                     <MapPin size={20} />
                   </div>
                   <div>

@@ -1,4 +1,4 @@
-import { User, Mail, MapPin, Phone, Briefcase, GraduationCap, Music, Dumbbell, PaintBucket, Sparkles, Heart, Globe } from 'lucide-react';
+import { User, Mail, MapPin, Briefcase, GraduationCap, Music, Dumbbell, PaintBucket, Sparkles, Globe } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Progress } from '../ui/progress';
@@ -8,9 +8,8 @@ const About = () => {
   const personalInfo = [
     { icon: <User size={20} />, label: "Nom", value: "Sami Assiakh" },
     { icon: <Mail size={20} />, label: "Email", value: "sami.assiakh@gmail.com" },
-    { icon: <Phone size={20} />, label: "Téléphone", value: "07 82 28 22 96" },
     { icon: <MapPin size={20} />, label: "Adresse", value: "Argenteuil, France" },
-    { icon: <Briefcase size={20} />, label: "Expérience", value: "3+ années" },
+    { icon: <Briefcase size={20} />, label: "Poste actuel", value: "Chef de Projet SI - ANFSI" },
     { icon: <GraduationCap size={20} />, label: "Formation", value: "Master Ingénierie du Web" },
   ];
 
@@ -46,14 +45,17 @@ const About = () => {
               </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-muted-foreground text-justify">
-                Je suis un développeur full-stack passionné par les technologies web et mobile, avec une 
-                expertise particulière en Nuxt.js/Vue.js, Symfony et Node.js. Actuellement en fin d&apos;alternance au Ministère 
-                de l&apos;Intérieur, je développe des applications web pour la Préfecture de Police de Paris.
+                Je suis Chef de Projet SI et développeur full-stack passionné par les technologies web et mobile, 
+                avec une expertise particulière en Nuxt.js/Vue.js, Symfony et Node.js. Actuellement en poste à 
+                l&apos;ANFSI (Agence du Numérique des Forces de Sécurité Intérieure), je pilote des projets 
+                de transformation digitale tout en gardant une forte proximité avec la technique.
               </p>
               <p className="text-muted-foreground text-justify">
-                J&apos;aime relever des défis techniques et créer des solutions innovantes qui répondent 
-                parfaitement aux besoins des utilisateurs. Je m&apos;intéresse particulièrement aux 
-                architectures propres, à la sécurité des applications et aux pratiques DevOps.
+                Ma double casquette me permet d&apos;avoir une vision à 360° des projets : je comprends les enjeux 
+                techniques, je pilote les équipes, je coordonne les parties prenantes et je m&apos;assure de la 
+                livraison de solutions innovantes qui répondent parfaitement aux besoins métier. Je m&apos;intéresse 
+                particulièrement aux architectures propres, à la sécurité des applications, aux pratiques DevOps 
+                et à la gestion de projet agile.
               </p>
               <p className="text-muted-foreground text-justify">
                 Curieux et rigoureux, j&apos;apprécie autant le travail en équipe que les missions en autonomie, 

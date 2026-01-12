@@ -23,7 +23,7 @@ const Footer = () => {
               </h3>
             </Link>
             <p className="mt-2 text-primary-foreground/80">
-              Développeur Full-Stack | Paris, France
+              Chef de Projet SI & Développeur Full-Stack | Paris, France
             </p>
           </div>
 

@@ -1,10 +1,9 @@
 import { ArrowDown, Download, Sparkles, Code2, Palette } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-scroll';
-import { saveAs } from 'file-saver';
-import { track } from '@vercel/analytics';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,13 +23,6 @@ const Hero = () => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-
-
-  // function gère téléchargement cv perso
-  const handleDownloadCV = () => {
-    saveAs('/cv-sami-assiakh.pdf', 'CV_Sami_Assiakh.pdf');
-    track('cv_download', { location: 'hero_section' });
-  };
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center pt-16 pb-8 overflow-hidden">
@@ -86,24 +78,25 @@ const Hero = () => {
               </h1>
               <div className={`mt-3 flex items-center gap-3 text-2xl md:text-3xl font-medium text-foreground transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
                 <Code2 className="w-7 h-7 text-primary/70 animate-pulse" style={{ animationDelay: '0.5s' }} />
-                <span>Développeur Full-Stack</span>
+                <span>Chef de Projet SI & Développeur Full-Stack</span>
                 <Palette className="w-7 h-7 text-primary/70 animate-pulse" style={{ animationDelay: '1s' }} />
               </div>
             </div>
 
             <p className={`text-lg md:text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-              Passionné par le développement web et mobile avec une expertise en Nuxt.js, Symfony, Vue.js, 
-              Node.js et bien plus, je transforme des idées en solutions digitales 
-              innovantes et performantes.
+              Fort d&apos;une double expertise en gestion de projet et développement web, je combine 
+              compétences techniques (Nuxt.js, Symfony, Vue.js, Node.js) et vision stratégique 
+              pour piloter des projets digitaux innovants de A à Z.
             </p>
 
             <p className={`text-lg md:text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-              Actuellement en fin d&apos;études et bientôt en fin de contrat au Ministère de l&apos;Intérieur,
-              je suis actuellement à la recherche d&apos;un poste en tant que développeur full-stack.
+              Après une alternance enrichissante au Ministère de l&apos;Intérieur, j&apos;ai rejoint 
+              l&apos;ANFSI (Agence du Numérique des Forces de Sécurité Intérieure) en tant que Chef de Projet SI, 
+              où je contribue à la transformation digitale et à l&apos;innovation technologique.
             </p>
 
             <p className={`text-lg md:text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-              N&apos;hésitez pas à jeter un oeil à mon CV et à me contacter si vous êtes intéressé par mon profil !
+              N&apos;hésitez pas à jeter un œil à mon CV et à me contacter pour échanger sur vos projets !
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
@@ -120,16 +113,26 @@ const Hero = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                 </Button>
               </Link>
-              <Button
-                variant="secondary"
-                size="lg"
-                onClick={handleDownloadCV}
-                className="w-full sm:w-auto relative overflow-hidden group hover:scale-105 transition-all duration-300 hover:shadow-lg"
-              >
-                <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-                <span className="relative z-10">Télécharger mon CV</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              </Button>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="w-full sm:w-auto">
+                      <Button
+                        variant="secondary"
+                        size="lg"
+                        disabled
+                        className="w-full sm:w-auto relative overflow-hidden opacity-50 cursor-not-allowed"
+                      >
+                        <Download className="mr-2 h-4 w-4" />
+                        <span className="relative z-10">Télécharger mon CV</span>
+                      </Button>
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>CV non disponible au téléchargement pour le moment</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </div>
 
@@ -142,7 +145,7 @@ const Hero = () => {
               {/* Container image principal */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background shadow-2xl transition-all duration-500 group-hover:shadow-primary/20 group-hover:scale-105">
                 <img
-                  src="/assets/images/vie.jpg"
+                  src="/assets/images/sami.jpg"
                   alt="Sami Assiakh"
                   className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110"
                 />

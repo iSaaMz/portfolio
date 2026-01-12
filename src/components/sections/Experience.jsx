@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Briefcase, Building, Calendar, ChevronDown, ChevronUp } from 'lucide-react';
+import { Briefcase, Building, Calendar, ChevronDown } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
@@ -19,16 +19,23 @@ const Experience = () => {
 
   const experiences = [
     {
-      title: "À la recherche d'un CDI...",
-      type: "CDI",
-      company: "?",
-      location: "?",
-      period: "1er Octobre 2025",
+      title: "Chef de Projet SI",
+      type: "CDD / Contractuel",
+      company: "Agence du Numérique des Forces de Sécurité Intérieure (ANFSI)",
+      location: "Issy-les-Moulineaux",
+      period: "Depuis Janvier 2026",
       description: [
-        "A la recherche d'un CDI dans le développement web ou mobile à partir du 1er Octobre 2025",
+        "Analyse et conception de composants logiciels applicatifs dans le respect des évolutions souhaitées et des normes",
+        "Contribution à la définition des spécifications et recueil des besoins en accompagnant la MOA",
+        "Réalisation d'analyses techniques et d'études détaillées des projets",
+        "Développement et réalisation de modules en tant que Tech Lead (objets et composants logiciels)",
+        "Rédaction des documentations techniques et fonctionnelles",
+        "Réalisation de tests unitaires et traitement des dysfonctionnements",
+        "Mise en place d'architectures avec l'hébergeur et échanges avec les architectes",
+        "Maintenance corrective et évolutive des applications"
       ],
-      technologies: [""],
-      image: ""
+      technologies: ["Angular", "Java", "API REST", "PostgreSQL", "NGINX", "Tomcat", "Linux"],
+      image: "/assets/images/experience/anfsi.png"
     },
     {
       title: "Développeur d'applications web",
